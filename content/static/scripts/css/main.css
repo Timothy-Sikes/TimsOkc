@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* general styles */
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#background {
+    background-image: url('/images/TimsOKC/WarpDrive.gif');
+    background-size: cover;
+
+    height: 100vh;
+    padding:0;
+    margin:0;
+    display: flex;
+    justify-content: center;
+}
+
+.message {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-size:30px;
+}
+
+.align-self-center {
+    align-self: center;
+    padding: 2rem;
+}
+
+.logo{
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    font-weight: 200;
+    font-size: 150px;
+}
+
+.container-fluid {
+    min-height: 64px;
+}
+.creativity {
+    color: #7D7769
+}
+.logo {
+    max-width: 75%;
+}
+.navbar {
+    background-color: #7D7769;
+    color: #FFFFFF;
+    font-family: "Roboto";
+    font-size: 18px;
+}
+.navbar a {
+    color: #FFFFFF
+}
+.navbar-default .navbar-nav>li>a {
+  color: #FFFFFF;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover
+{
+    background-color: transparent;
+    color: #65A8A6;
+}
+.navbar-brand {
+    margin-top: -5px;
+}
+.noLink
+{
+    color: inherit;
+}
+.noLink:hover
+{
+    color: inherit;
+}
+/* padded section */
+.pad-section {
+    padding: 50px 0;
+}
+.pad-section img {
+    width: 100%;
+}
+.parallax1 {
+    /* The image used */
+    background-image: url("/images/backgroundLightSmall.png");
+
+    /* Set a specific height */
+    min-height: 300px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.parallax2 {
+    /* The image used */
+    background-image: url("/images/TimsOKC/hefner-1.jpg");
+
+    /* Set a specific height */
+    min-height: 1000px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.sponsorship {
+    min-height: 385px;
+}
+/* vertical-centered text */
+.text-vcenter {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.text-vcenter h1 {
+    font-size: 4.5em;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+/* additional sections */
+#home {
+    /*background: url(/images/pawns.jpg) no-repeat center center fixed;*/
+    background-color: #F8EBC2;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#resources, #sponsors, #about, #friends {
+    background-color: #65A8A6;
+    color: #ffffff;
+}
+#resources .glyphicon {
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 60px;
+    height: 140px;
+    line-height: 140px;
+    text-align: center;
+    vertical-align: middle;
+    width: 140px;
+}
+#information {
+    background: url(/images/pawns.jpg) no-repeat center center fixed;
+    display: table;
+    height: 300px;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#information .panel {
+    opacity: 0.85;
+}
+#google_map {
+    height: 500px;
+}
+#mainLogo {
+    width: 500px;
+    text-align: center;
+}
+#navbar-collapse-main {
+    margin-top:6px;
+}
+footer {
+    background-color: #665683; 
+    color: #FFFFFF;
+    padding: 20px 0;
+}
+footer .glyphicon {
+    color: #FFFFFF;
+    font-size: 60px;
+}
+footer .glyphicon:hover {
+    color: #306d9f;
+}
+h1, h2 {
+    font-family: "Comfortaa"
+}
+p, h3, h4{
+    font-family: "Roboto"
+}
+hr {
+    color: #F8EBC2;
+}
+a {
+    color: #F8EBC2;
+}
+a:hover{
+    color: #F9E883;
+}

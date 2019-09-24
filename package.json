@@ -1,0 +1,12 @@
+{
+  "name": "playtest-ok",
+  "version": "0.0.1",
+  "scripts": {
+    "watch": "npm run watch-css & nodemon server",
+    "start": "node server"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "http-server": "^0.10.0"
+  }
+}
