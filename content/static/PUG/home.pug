@@ -1,0 +1,15 @@
+extends default
+
+include ./main.pug
+include ./wip.pug
+include ./footer.pug
+include ./dyanmicParallax.pug
+include ./food2.pug
+
+block append head
+    +dyanmicParallax(name, url)
+
+append content
+    +main
+    +wip
+    +footer

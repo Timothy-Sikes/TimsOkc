@@ -18,6 +18,32 @@ html, body {
     justify-content: center;
 }
 
+.overlay {
+    background: rgba(39,62,84,0.82);
+    overflow: hidden;
+    height: 100%;
+    z-index: 2;
+}
+
+.purple {
+    background-color: purple;
+
+    /* Set a specific height */
+    min-height: 300px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.white {
+    background-color: white;
+    color: black;
+}
+
 .message {
     font-family: 'Open Sans', sans-serif;
     color: white;
@@ -112,6 +138,10 @@ html, body {
 }
 .sponsorship {
     min-height: 385px;
+}
+.third {
+    min-height: 33%;
+    height: 33%;
 }
 /* vertical-centered text */
 .text-vcenter {

@@ -1,0 +1,18 @@
+mixin dyanmicParallax(name, url)
+    style(type='text/css').
+        .parallax#{name} {
+            /* The image used */
+            background-image: url("#{url}");
+
+            /* Set a specific height */
+            min-height: 1000px; 
+
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
