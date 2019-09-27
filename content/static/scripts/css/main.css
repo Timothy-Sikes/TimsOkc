@@ -68,6 +68,25 @@ html, body {
 .creativity {
     color: #7D7769
 }
+
+.header1 {
+    color: #673AB7;
+}
+
+.standout {
+    border: thin;
+    border-style: outset;
+    border-color: #00ffc5;
+    /*border-color: #673AB7;*/
+}
+
+.top-20 {
+    padding-top: 20px;
+}
+.top-10 {
+    padding-top: 10px;
+}
+
 .logo {
     max-width: 75%;
 }
@@ -136,6 +155,23 @@ html, body {
     display: flex;
     justify-content: center;
 }
+
+.picture {
+    background-image: url("/images/TimsOKC/carbonara.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:300px;
+    margin-top: 10px;
+    box-shadow: 4px 4px 8px 0px #004852;
+    width: 75%;
+}
+
+.picture-holder
+{
+    text-align: center;
+}
+
 .sponsorship {
     min-height: 385px;
 }
@@ -172,6 +208,15 @@ html, body {
     background-color: #65A8A6;
     color: #ffffff;
 }
+
+#cooking {
+    background-color: #01dfff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
 #resources .glyphicon {
     border: 2px solid #FFFFFF;
     border-radius: 50%;
@@ -220,7 +265,8 @@ footer .glyphicon:hover {
     color: #306d9f;
 }
 h1, h2 {
-    font-family: "Comfortaa"
+    font-family: "Comfortaa";
+    font-size: 48px;
 }
 p, h3, h4{
     font-family: "Roboto"
@@ -233,4 +279,52 @@ a {
 }
 a:hover{
     color: #F9E883;
+}
+
+.cooking-card p
+{
+    color: #673AB7;
+    text-align: center;
+}
+
+span.line
+{
+    display: inline-block;
+    min-width: 150px;
+}
+
+.cooking-card2
+{
+    max-width: 300px;
+    /*background: #6fedffe0;*/
+}
+
+.cooking-title
+{
+    height: 70px;
+    border-top: solid;
+    border-bottom: solid;
+}
+
+.cooking-info
+{
+    border-bottom: solid;
+    border-top: solid;
+    color: #673AB7;
+    padding-top: 6px;
+}
+
+#cooking a
+{
+    text-decoration: none;
+}
+
+#cooking a:hover
+{
+    text-decoration: none;
+}
+
+#cooking a:visited
+{
+    text-decoration: none;
 }

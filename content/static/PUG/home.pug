@@ -5,11 +5,14 @@ include ./wip.pug
 include ./footer.pug
 include ./dyanmicParallax.pug
 include ./food2.pug
+include ./cooking.pug
 
 block append head
     +dyanmicParallax(name, url)
 
 append content
     +main
+    +cooking
     +wip
     +footer
+    
