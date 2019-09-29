@@ -328,3 +328,55 @@ span.line
 {
     text-decoration: none;
 }
+
+#likes {
+    background-color: white;
+    color: green;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#likes h1 {
+    color: white;
+}
+
+#likes h2 {
+    color: white;
+}
+
+#likes .standout-container {
+    background-color: black;
+    padding: 15px;
+}
+
+#likes .standout {
+    border: double;
+    border-style: double;
+    border-color: white;
+    background-color: black;
+}
+
+#likes .title {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+}
+
+#likes p {
+    color: white;
+}
+
+.content-holder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.holder1 {
+    background-color: #337ab7;
+    padding: 35px;
+    margin-bottom: 35px;
+    margin-right: 35px;
+}

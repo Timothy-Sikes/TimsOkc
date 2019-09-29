@@ -1,0 +1,9 @@
+mixin likeHolder
+    .holder1
+        h2(style="text-align: center;") #{likeHeader}
+        .holder2(style="text-align: center;")
+            if (likeYoutube)
+                <iframe width="258" height="158" src="`${youtubeUrl}'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            if (likeImage)
+                img(src=`${likeImage}` width="258")
+        p(style="text-align: center;") #{likeReview}
