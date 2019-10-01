@@ -1,0 +1,13 @@
+mixin dynamicHome(backgroundImage)
+    style(type='text/css').
+        #background {
+            background-image: url('#{backgroundImage}');
+            background-size: cover;
+            background-position: center;
+            max-width: 100vw;
+            height: 100vh;
+            padding:0;
+            margin:0;
+            display: flex;
+            justify-content: center;
+        }

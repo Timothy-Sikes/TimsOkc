@@ -7,9 +7,11 @@ include ./dyanmicParallax.pug
 include ./food2.pug
 include ./cooking.pug
 include ./likes.pug
+include ./dynamicHome.pug
 
 block append head
     +dyanmicParallax(name, url)
+    +dynamicHome(backgroundImage)
 
 append content
     +main
