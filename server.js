@@ -20,9 +20,9 @@ backgroundPaths = [
   "/images/TimsOKC/underground_green.jpg",
   "/images/TimsOKC/underground_blue.jpg",
   "/images/TimsOKC/lines1.jpg",
-  "/images/TimsOKC/bricks2.png",
-  "/images/TimsOKC/pdx.png",
-  "/images/TimsOKC/wood-paneling.png",
+  "/images/TimsOKC/bricks2.jpg",
+  "/images/TimsOKC/pdx.jpg",
+  "/images/TimsOKC/wood-paneling.jpg",
   "/images/TimsOKC/Matrix.gif"
 ]
 
