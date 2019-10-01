@@ -23,7 +23,8 @@ backgroundPaths = [
   "/images/TimsOKC/bricks2.jpg",
   "/images/TimsOKC/pdx.jpg",
   "/images/TimsOKC/wood-paneling.jpg",
-  "/images/TimsOKC/Matrix.gif"
+  "/images/TimsOKC/Matrix.gif",
+  "/images/TimsOKC/beetleborgs.gif",
 ]
 
 const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');

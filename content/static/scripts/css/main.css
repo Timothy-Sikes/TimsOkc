@@ -195,7 +195,7 @@ html, body {
 /* additional sections */
 #home {
     /*background: url(/images/pawns.jpg) no-repeat center center fixed;*/
-    background-color: #F8EBC2;
+    background-color: black;
     display: table;
     height: 100%;
     position: relative;
