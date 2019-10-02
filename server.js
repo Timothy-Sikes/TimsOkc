@@ -15,6 +15,12 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
+const asyncMiddleware = fn =>
+  (req, res, next) => {
+    Promise.resolve(fn(req, res, next))
+      .catch(next);
+  };
+
 backgroundPaths = [
   "/images/TimsOKC/WarpDrive.gif",
   "/images/TimsOKC/underground_green.jpg",
@@ -30,26 +36,23 @@ backgroundPaths = [
 const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 const base = Airtable.base('app3Q7m6yl9TLjbbP');
 
-app.get('*', function (req, res) {
-  recipeNightsPromise = airtableFuncs.getLatestRecipe(base)
+app.get('*', asyncMiddleware(async function (req, res) {
 
-  recipeNightsPromise().then(function(recipeNightsRecord) {
-    recipePromise = airtableFuncs.getRecipeRecord(base, recipeNightsRecord[0].fields.Recipe[0])
-  
-    recipePromise.then(function(record) {
-      res.send(compiledFunction({
-        message: "A placeholder for something I might do someday maybe.",
-        name: "test",
-        recipePic: record.fields["Attachments"][0].url || "http://orcz.com/images/7/71/BreathoftheWildDubiousFood.jpg",
-        recipeName: record.fields["Recipe Name"],
-        recipeDate: recipeNightsRecord[0].fields.Date,
-        recipeUrl: record.fields["URL"],
-        recipeSuccess: recipeNightsRecord[0].fields.Success + "!" || "🤷",
+  recipeNightsRecord = await airtableFuncs.getLatestRecipe(base);
+  recipeRecord = await airtableFuncs.getRecipeRecord(base, recipeNightsRecord[0].fields.Recipe[0])
 
-        backgroundImage: backgroundPaths[getRandomInt(backgroundPaths.length)]
-      }))
-    })
+  res.send(compiledFunction({
+    message: "A placeholder for something I might do someday maybe.",
+    name: "test",
+    recipePic: recipeRecord.fields["Attachments"][0].url || "http://orcz.com/images/7/71/BreathoftheWildDubiousFood.jpg",
+    recipeName: recipeRecord.fields["Recipe Name"],
+    recipeDate: recipeNightsRecord[0].fields.Date,
+    recipeUrl: recipeRecord.fields["URL"],
+    recipeSuccess: recipeNightsRecord[0].fields.Success + "!" || "🤷",
+
+    backgroundImage: backgroundPaths[getRandomInt(backgroundPaths.length)]
+  }))
   })
-})
+)
 
 app.listen((process.env.PORT || 8000));
