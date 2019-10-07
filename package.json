@@ -9,6 +9,7 @@
     "airtable": "^0.7.1",
     "express": "^4.15.2",
     "http-server": "^0.10.0",
+    "nodemon": "^1.19.3",
     "pug": "^2.0.4"
   }
 }

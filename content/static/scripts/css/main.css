@@ -71,10 +71,11 @@ html, body {
 }
 
 .header1 {
-    color: #673AB7;
+    color: #00ffc5;
 }
 
 .standout {
+    border-radius: 30px;
     border: thin;
     border-style: outset;
     border-color: #00ffc5;
@@ -211,11 +212,12 @@ html, body {
 }
 
 #cooking {
-    background-color: #01dfff;
+    background-color: #286090;
     color: white;
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #resources .glyphicon {
@@ -284,14 +286,15 @@ a:hover{
 
 .cooking-card p
 {
-    color: #673AB7;
+    color: #00ffc5;
     text-align: center;
 }
 
 span.line
 {
     display: inline-block;
-    min-width: 150px;
+    min-width: 175px;
+    padding-top: 5px;
 }
 
 .cooking-card2
@@ -311,7 +314,7 @@ span.line
 {
     border-bottom: solid;
     border-top: solid;
-    color: #673AB7;
+    color: #00ffc5;
     padding-top: 6px;
 }
 
@@ -328,6 +331,26 @@ span.line
 #cooking a:visited
 {
     text-decoration: none;
+}
+
+#cooking h1
+{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#cooking h2
+{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#cooking h3
+{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#cooking p
+{
+    font-family: 'Montserrat', sans-serif;
 }
 
 #likes {

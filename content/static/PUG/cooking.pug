@@ -1,28 +1,29 @@
 mixin cooking
     #cooking
         .container
-            .top-20
-                .standout
-                    .header1
-                        h1(style="text-align: center;") 
-                            span.line 🥩🍳🍲
-                            span.line &nbsp;Cooking&nbsp;
-                            span.line 🍕🌯🍔
-                        p(style="text-align:center") A look at what Tim has been cooking lately.
-            .break
-            .top-20
-                .cooking-card
-                    .container.standout.cooking-card2
-                        a(href=`${recipeUrl}` target="_blank")
-                            .top-10
-                            .cooking-title.header1
-                                h3(style="text-align: center;")  #{recipeName}
-                            .top-10
-                            .picture-holder
-                                img(src=`${recipePic}` style='width:200px; /*box-shadow: 4px 4px 8px 0px #004852;*/')
-                            .top-10
-                            .cooking-info
-                                p #{recipeDate}
-                                p This recipe was #{recipeSuccess}
-                            .top-10
-            .top-20
+            .cooking-holder
+                .top-20
+                    .standout
+                        .header1
+                            h1(style="text-align: center;") 
+                                span.line 🥩🍳🍲
+                                span.line &nbsp;Cooking&nbsp;
+                                span.line 🍕🌯🍔
+                            p(style="text-align:center") A look at what Tim has been cooking lately.
+                .break
+                .top-20
+                    .cooking-card
+                        .container.standout.cooking-card2(style="border-radius:20px;")
+                            a(href=`${recipeUrl}` target="_blank")
+                                .top-10
+                                .cooking-title.header1
+                                    h3(style="text-align: center;")  #{recipeName}
+                                .top-10
+                                .picture-holder
+                                    img(src=`${recipePic}` style='width:200px; /*box-shadow: 4px 4px 8px 0px #004852;*/')
+                                .top-10
+                                .cooking-info
+                                    p #{recipeDate}
+                                    p This recipe was #{recipeSuccess}
+                                .top-10
+                .top-20
