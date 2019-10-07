@@ -39,16 +39,18 @@ const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 app.get('*', asyncMiddleware(async function (req, res) {
   recipeNightsRecords = await airtableFuncs.getLatestRecipe(base);
 
-  recipesPromises = recipeNightsRecords.slice(0,3).map(async function (element) {
-    recipeRecord = await airtableFuncs.getRecipeRecord(base, element.fields.Recipe[0])
+  recipesPromises = recipeNightsRecords.slice(0,3).map(async function (recipeNight) {
+    recipeRecord = await airtableFuncs.getRecipeRecord(base, recipeNight.fields.Recipe[0])
+    console.log(recipeRecord)
+    console.log(recipeNight.fields)
     return {
       "recipe" :
       {
         "Pic" : recipeRecord.fields["Attachments"][0].url || "http://orcz.com/images/7/71/BreathoftheWildDubiousFood.jpg",
         "Name" : recipeRecord.fields["Recipe Name"],
-        "Date" : recipeNightsRecords[0].fields.Date,
+        "Date" : recipeNight.fields["Date"],
         "Url" : recipeRecord.fields["URL"],
-        "Success" : recipeNightsRecords[0].fields.Success + "!" || "🤷",
+        "Success" : (recipeNight.fields.Success || "🤷") + "!",
       }
     }
   });
