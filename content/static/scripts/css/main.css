@@ -77,7 +77,7 @@ html, body {
 .standout {
     border-radius: 30px;
     border: thin;
-    border-style: outset;
+    border-style: solid;
     border-color: #00ffc5;
     /*border-color: #673AB7;*/
 }
@@ -284,6 +284,10 @@ a:hover{
     color: #F9E883;
 }
 
+.cooking-card {
+    padding-top: 15px;
+}
+
 .cooking-card p
 {
     color: #00ffc5;
@@ -305,14 +309,12 @@ span.line
 
 .cooking-title
 {
-    height: 70px;
-    border-top: solid;
     border-bottom: solid;
 }
 
 .cooking-info
 {
-    border-bottom: solid;
+    /*(border-bottom: solid;*/
     border-top: solid;
     color: #00ffc5;
     padding-top: 6px;

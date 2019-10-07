@@ -1,0 +1,22 @@
+extends cookingMany
+
+mixin cooking-card(recipe)
+    .cooking-card
+        .container.standout.cooking-card2
+            a(href=`${recipe.recipe.Url}` target="_blank")
+                .top-10
+                .cooking-title.header1
+                    h3(style="text-align: center;")  #{recipe.recipe.Name}
+                .top-10
+                .picture-holder
+                    img(src=`${recipe.recipe.Pic}` style='width:200px; /*box-shadow: 4px 4px 8px 0px #004852;*/')
+                .top-10
+                .cooking-info
+                    p #{recipe.recipe.Date}
+                    p This recipe was #{recipe.recipe.Success}
+                .top-10
+
+
+block append cookingContent
+    each val in cookingCards
+        +cooking-card(val)

@@ -33,24 +33,32 @@ backgroundPaths = [
   "/images/TimsOKC/beetleborgs.gif",
 ]
 
-const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 const base = Airtable.base('app3Q7m6yl9TLjbbP');
+const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 
 app.get('*', asyncMiddleware(async function (req, res) {
+  recipeNightsRecords = await airtableFuncs.getLatestRecipe(base);
 
-  recipeNightsRecord = await airtableFuncs.getLatestRecipe(base);
-  recipeRecord = await airtableFuncs.getRecipeRecord(base, recipeNightsRecord[0].fields.Recipe[0])
+  recipesPromises = recipeNightsRecords.slice(0,3).map(async function (element) {
+    recipeRecord = await airtableFuncs.getRecipeRecord(base, element.fields.Recipe[0])
+    return {
+      "recipe" :
+      {
+        "Pic" : recipeRecord.fields["Attachments"][0].url || "http://orcz.com/images/7/71/BreathoftheWildDubiousFood.jpg",
+        "Name" : recipeRecord.fields["Recipe Name"],
+        "Date" : recipeNightsRecords[0].fields.Date,
+        "Url" : recipeRecord.fields["URL"],
+        "Success" : recipeNightsRecords[0].fields.Success + "!" || "🤷",
+      }
+    }
+  });
+
+  recipes = await Promise.all(recipesPromises)
 
   res.send(compiledFunction({
     message: "A placeholder for something I might do someday maybe.",
-    name: "test",
-    recipePic: recipeRecord.fields["Attachments"][0].url || "http://orcz.com/images/7/71/BreathoftheWildDubiousFood.jpg",
-    recipeName: recipeRecord.fields["Recipe Name"],
-    recipeDate: recipeNightsRecord[0].fields.Date,
-    recipeUrl: recipeRecord.fields["URL"],
-    recipeSuccess: recipeNightsRecord[0].fields.Success + "!" || "🤷",
-
-    backgroundImage: backgroundPaths[getRandomInt(backgroundPaths.length)]
+    backgroundImage: backgroundPaths[getRandomInt(backgroundPaths.length)],
+    cookingCards: recipes
   }))
   })
 )

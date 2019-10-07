@@ -1,7 +1,7 @@
 function getLatestRecipe(base)
 {
     return base('Recipe Nights').select({
-      maxRecords: 1,
+      maxRecords: 3,
       sort: [{field: "Date", direction: "desc"}]
     }).firstPage();
 }

@@ -9,13 +9,23 @@ include ./cooking.pug
 include ./likes.pug
 include ./dynamicHome.pug
 
+include ./cookingMany.pug
+include ./cookingCard.pug
+
 block append head
     +dyanmicParallax(name, url)
     +dynamicHome(backgroundImage)
 
 append content
     +main
-    +cooking
+    //-+cooking
+    +cookingMany
+    //-+cookingCard
+                //-+cookingCard(val)
     +wip
     +footer
-    
+
+//-append cookingContent
+    p test
+    each val in cookingCards
+        +cookingCard(val)
