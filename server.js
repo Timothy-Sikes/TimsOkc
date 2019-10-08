@@ -41,8 +41,6 @@ app.get('*', asyncMiddleware(async function (req, res) {
 
   recipesPromises = recipeNightsRecords.slice(0,3).map(async function (recipeNight) {
     recipeRecord = await airtableFuncs.getRecipeRecord(base, recipeNight.fields.Recipe[0])
-    console.log(recipeRecord)
-    console.log(recipeNight.fields)
     return {
       "recipe" :
       {
