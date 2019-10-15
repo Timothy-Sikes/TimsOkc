@@ -42,12 +42,28 @@ backgroundPaths = [
 catchPhrases = [
   "A Good Place",
   "Mostly Harmless",
-  "Very Cool and Very Legal",
+  "Digimon are the Champions",
   "A website for me",
-  "","","","","","","","","","","","",
+  "","","","","","","","","","",
+  "","","","","","","","","","",
   "Share and enjoy",
   "😎",
-  "Vibing"
+  "Ka is a wheel",
+  "Cool. Cool. Cool Cool Cool.",
+  "Six Seasons and a movie",
+  "Save the cheerleader save the world",
+  "19",
+  "Extremely Online",
+  "All things serve the beam",
+  "Leave luck to the gods",
+  "Ad Astra per aspera",
+  "Labor omnia vincit",
+  "#WhyNot",
+  "⚡ Thunder Up ⚡",
+  "Time is an illusion. Lunchtime doubly so.",
+  "If you build it they will come",
+  "No crying till the end",
+  "Time, Truth, Heart"
 ]
 
 const base = Airtable.base('app3Q7m6yl9TLjbbP');
