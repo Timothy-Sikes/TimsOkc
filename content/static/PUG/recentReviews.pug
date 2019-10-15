@@ -1,0 +1,22 @@
+extends currentlyReading
+
+mixin recent-review-card(book)
+    .recent-review-card
+        .container.standout3
+            a(href=`${book.link}` target="_blank")
+                .top-10
+                .book-title.header3
+                    h3(style="text-align: center;") #{book.title}
+                p.star
+                    - for(var i = 0; i <  book.stars; i++)
+                        | ☆
+                .top-10
+                .picture-holder
+                    img(src=`${book.image}` style='width:100px;')
+            .top-10
+            p
+                | !{book.review}
+
+block append bookRecentReviews
+    each val in recentReviews
+        +recent-review-card(val)

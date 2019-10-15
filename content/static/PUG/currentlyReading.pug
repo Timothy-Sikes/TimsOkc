@@ -1,0 +1,17 @@
+extends booksMany
+
+mixin currently-reading-card(book)
+    .currently-reading-card
+        .container.standout3
+            a(href=`${book.link}` target="_blank")
+                .top-10
+                .book-title.header3
+                    h3(style="text-align: center;") #{book.title}
+                .top-10
+                .picture-holder
+                    img(src=`${book.image}` style='width:100px;')
+                .top-10
+
+block append bookCurrentlyReading
+    each val in currentlyReading
+        +currently-reading-card(val)

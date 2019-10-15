@@ -268,20 +268,14 @@ footer .glyphicon:hover {
     color: #306d9f;
 }
 h1, h2 {
-    font-family: "Comfortaa";
+    /*font-family: "Comfortaa";*/
     font-size: 48px;
 }
 p, h3, h4{
-    font-family: "Roboto"
+    /*font-family: "Roboto"*/
 }
 hr {
     color: #F8EBC2;
-}
-a {
-    color: #F8EBC2;
-}
-a:hover{
-    color: #F9E883;
 }
 
 .cooking-card {
@@ -442,3 +436,106 @@ span.line
   100% {transform: rotate(0deg);}
 }
 
+.relative {
+    position: relative;
+    height: 0px;
+    width: 0px;
+}
+
+.line1 {
+    background-color: #15f715;
+    top: 30px;
+    width: 20vw;
+    height: 10px;
+    position: absolute;
+}
+
+.line2 {
+    background-color: #167ac6;
+    top: 50px;
+    width: 25vw;
+    height: 10px;
+    position: absolute;
+}
+
+.line3 {
+    background-color: #ec0956;
+    top: 70px;
+    width: 30vw;
+    height: 10px;
+    position: absolute;
+}
+
+.line4 {
+    left: 92vw;
+    background-color: #15f715;
+    top: 30px;
+    width: 60vw;
+    height: 10px;
+    position: absolute;
+}
+
+.line5 {
+    left: 87vw;
+    background-color: #167ac6;
+    top: 50px;
+    width: 60vw;
+    height: 10px;
+    position: absolute;
+}
+
+.line6 {
+    left: 82vw;
+    background-color: #ec0956;
+    top: 70px;
+    width: 60vw;
+    height: 10px;
+    position: absolute;
+}
+
+#books {
+    background: black;
+    color: #7EF4F4;
+    text-shadow: 0 0 5px rgba(21,171,195,0.7);
+    font-family: 'Montserrat', sans-serif;
+    /*text-shadow: -2px -1px 5px #1f4646;*/
+}
+
+#books .standout {
+    background: #7EF4F4;
+    border: 1px solid rgba(36,198,24,1.0);
+}
+
+#books h1 {
+    color: black;
+    /*text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px rgb(0, 230, 230), 0 0 30px rgb(0, 230, 230), 0 0 40px rgb(0, 230, 230), 0 0 55px rgb(0, 230, 230), 0 0 75px rgb(0, 230, 230);
+    */
+}
+
+#books p {
+    text-align: center;
+}
+
+#books .standout p {
+    color: black;
+}
+
+#books h3 {
+    /*text-decoration: underline;*/
+}
+
+#books #book-currently-reading {
+    border: 1px solid #7EF4F4;
+    border-radius: 30px;
+    box-shadow: 0 0 10px #7EF4F4;
+}
+
+#books a {
+    color: #7EF4F4;
+}
+
+#books #book-recent-reviews {
+    border: 1px solid #7EF4F4;
+    border-radius: 30px;
+    box-shadow: 0 0 10px #7EF4F4;
+}

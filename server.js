@@ -1,10 +1,16 @@
 var express = require('express');
 var app = express();
 const pug = require('pug');
+var goodreadsFuncs = require("./goodreads/goodreads.js")
 var Airtable = require('airtable');
 var airtableFuncs = require('./airtable/airtableFuncs.js')
 
 app.use(express.static('./content/static/'));
+
+const myCredentials = {
+  key: process.env.GOODREADS_KEY,
+  secret: process.env.GOODREADS_SECRET
+};
 
 Airtable.configure({
   endpointUrl: 'https://api.airtable.com',
@@ -34,10 +40,11 @@ backgroundPaths = [
 ]
 
 const base = Airtable.base('app3Q7m6yl9TLjbbP');
-const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
+const goodreadsUserId = 12784983;
 
 app.get('*', asyncMiddleware(async function (req, res) {
   recipeNightsRecords = await airtableFuncs.getLatestRecipe(base);
+  const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 
   recipesPromises = recipeNightsRecords.slice(0,3).map(async function (recipeNight) {
     recipeRecord = await airtableFuncs.getRecipeRecord(base, recipeNight.fields.Recipe[0])
@@ -53,12 +60,21 @@ app.get('*', asyncMiddleware(async function (req, res) {
     }
   });
 
+
   recipes = await Promise.all(recipesPromises)
+  let [currentlyReading, recentReviews, ] = await Promise.all([
+    goodreadsFuncs.getShelf("currently-reading", goodreadsUserId, myCredentials),
+    goodreadsFuncs.getShelf("read", goodreadsUserId, myCredentials)]);
+
+  currentlyReadingFormatted = goodreadsFuncs.formatCurrentlyReading(currentlyReading);
+  recentReviewsFormatted = goodreadsFuncs.formatReview(recentReviews);
 
   res.send(compiledFunction({
     message: "A placeholder for something I might do someday maybe.",
     backgroundImage: backgroundPaths[getRandomInt(backgroundPaths.length)],
-    cookingCards: recipes
+    cookingCards: recipes,
+    currentlyReading: currentlyReadingFormatted,
+    recentReviews: recentReviewsFormatted
   }))
   })
 )

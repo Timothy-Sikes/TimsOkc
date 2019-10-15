@@ -1,0 +1,31 @@
+mixin booksMany
+    #books
+        .container
+            .top-20
+                .standout
+                    .header1
+                        h1(style="text-align: center;") 
+                            span.line.emoji 📚
+                            span.line &nbsp;Reading&nbsp;
+                            span.line.emoji 📖
+                        p(style="text-align:center") Tim's recent books (Powered by GoodReads)
+                    .top-20
+            .break
+            .top-20
+                .standout2
+                        .header3
+                            h3(style="text-align: center;")
+                                | Currently Reading
+                        .top-20
+                #book-currently-reading
+                    block bookCurrentlyReading
+            .top-20
+                .standout2
+                        .header3
+                            h3(style="text-align: center;")
+                                | Recent Reviews
+                        .top-20
+                #book-recent-reviews
+                    block bookRecentReviews
+            .top-20
+            

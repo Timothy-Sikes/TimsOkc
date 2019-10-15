@@ -11,6 +11,10 @@ include ./dynamicHome.pug
 
 include ./cookingMany.pug
 include ./cookingCard.pug
+include ./chess.pug
+include ./booksMany.pug
+include ./currentlyReading.pug
+include ./recentReviews.pug
 
 block append head
     +dyanmicParallax(name, url)
@@ -22,6 +26,9 @@ append content
     +cookingMany
     //-+cookingCard
                 //-+cookingCard(val)
+    //-+likes
+    //-+chess
+    +booksMany
     +wip
     +footer
 
