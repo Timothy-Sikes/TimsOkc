@@ -56,11 +56,17 @@ html, body {
     padding: 2rem;
 }
 
-.logo{
+.logo {
     font-family: 'Orbitron', sans-serif;
     color: white;
     font-weight: 200;
     font-size: 150px;
+}
+
+.catchphrase {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
 }
 
 .container-fluid {

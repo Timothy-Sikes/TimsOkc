@@ -39,6 +39,17 @@ backgroundPaths = [
   "/images/TimsOKC/beetleborgs.gif",
 ]
 
+catchPhrases = [
+  "A Good Place",
+  "Mostly Harmless",
+  "Very Cool and Very Legal",
+  "A website for me",
+  "","","","","","","","","","","","",
+  "Share and enjoy",
+  "😎",
+  "Vibing"
+]
+
 const base = Airtable.base('app3Q7m6yl9TLjbbP');
 const goodreadsUserId = 12784983;
 
@@ -72,6 +83,7 @@ app.get('*', asyncMiddleware(async function (req, res) {
   res.send(compiledFunction({
     message: "A placeholder for something I might do someday maybe.",
     backgroundImage: backgroundPaths[getRandomInt(backgroundPaths.length)],
+    catchphrase: catchPhrases[getRandomInt(catchPhrases.length)],
     cookingCards: recipes,
     currentlyReading: currentlyReadingFormatted,
     recentReviews: recentReviewsFormatted
