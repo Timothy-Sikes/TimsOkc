@@ -1,0 +1,16 @@
+extends default
+
+include ./otgw.pug
+include ./footer.pug
+include ./dyanmicParallax.pug
+include ./dynamicHome.pug
+
+
+block append head
+    +dyanmicParallax(name, url)
+    +dynamicHome
+    link(rel = 'stylesheet', href=`/scripts/css/otgw.css`)
+
+append content
+    +otgw
+    +footer

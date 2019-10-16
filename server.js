@@ -90,7 +90,16 @@ catchPhrases = [
 
 const base = Airtable.base('app3Q7m6yl9TLjbbP');
 const goodreadsUserId = 12784983;
+
+const otgw = pug.compileFile('./content/static/PUG/homeOtgw.pug');
 const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
+
+app.get('/otgw', asyncMiddleware(async function (req, res) {
+  res.send(otgw({
+    backgroundImage: "/images/TimsOKC/otgw.gif",
+    url: "/images/TimsOKC/otgw.gif"
+  }));
+}))
 
 app.get('*', asyncMiddleware(async function (req, res) {
   recipeNightsRecords = await airtableFuncs.getLatestRecipe(base);
