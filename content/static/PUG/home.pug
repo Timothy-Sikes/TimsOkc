@@ -19,6 +19,8 @@ include ./recentReviews.pug
 block append head
     +dyanmicParallax(name, url)
     +dynamicHome(backgroundImage)
+    link(rel = 'stylesheet', href=`/scripts/css/goodreads${goodreadsCss}.css`)
+    //link(rel = 'stylesheet', href=`/scripts/css/goodreads3.css`)
 
 append content
     +main

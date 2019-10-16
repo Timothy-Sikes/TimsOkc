@@ -90,10 +90,10 @@ catchPhrases = [
 
 const base = Airtable.base('app3Q7m6yl9TLjbbP');
 const goodreadsUserId = 12784983;
+const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 
 app.get('*', asyncMiddleware(async function (req, res) {
   recipeNightsRecords = await airtableFuncs.getLatestRecipe(base);
-  const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 
   recipesPromises = recipeNightsRecords.slice(0,3).map(async function (recipeNight) {
     recipeRecord = await airtableFuncs.getRecipeRecord(base, recipeNight.fields.Recipe[0])
@@ -124,7 +124,8 @@ app.get('*', asyncMiddleware(async function (req, res) {
     catchphrase: catchPhrases[getRandomInt(catchPhrases.length)],
     cookingCards: recipes,
     currentlyReading: currentlyReadingFormatted,
-    recentReviews: recentReviewsFormatted
+    recentReviews: recentReviewsFormatted,
+    goodreadsCss: getRandomInt(3) + 1
   }))
   })
 )

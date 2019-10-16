@@ -1,0 +1,51 @@
+
+#books {
+    background: rgb(242, 68, 0);
+    color: rgb(253, 254, 235);
+    font-family: 'Montserrat', sans-serif;
+}
+
+#books .standout {
+    background: black;
+    border: none;
+    border-radius: 0px;
+}
+
+#books h1 {
+    color: rgb(253, 254, 235);
+    padding-top: 20px;
+}
+
+#books p {
+    text-align: center;
+}
+
+#books .standout p {
+    color: rgb(253, 254, 235);
+}
+
+#books h3 {
+    /*text-decoration: underline;*/
+}
+
+#books #book-currently-reading {
+    background: rgb(20, 120, 235);
+    color: rgb(253, 254, 235);
+    border: 5px solid rgb(240, 141, 0);
+    border-radius: 30px;
+}
+
+#books #book-currently-reading a {
+    color: rgb(253, 254, 235);
+}
+
+#books #book-recent-reviews a {
+    color: rgb(88, 85, 52);
+}
+
+#books #book-recent-reviews {
+    border: 5px solid rgb(240, 141, 0);
+    background: rgb(253, 254, 235);
+    color: rgb(88, 85, 52);
+    border-radius: 30px;
+}
