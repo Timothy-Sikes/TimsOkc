@@ -2,3 +2,15 @@
     color: #ffffff;
     font-size: 30px;
 }
+
+.innerOtgw {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    background-color: #777;
+    margin-right: 10px;
+    vertical-align: top;
+    background-color: rgba(0,0,0,.4);
+    z-index: 1;
+    margin-right: 0px;
+}
