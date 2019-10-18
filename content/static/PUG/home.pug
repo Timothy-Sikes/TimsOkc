@@ -25,6 +25,17 @@ block append head
     meta(property="og:title" content="Tims OKC")
     meta(property="og:type" content="webpage")
     meta(property="go:url" content="http://www.timsokc.com")
+    style(type='text/css').
+        #background-inner {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            vertical-align: top;
+            background-color: rgba(0,0,0,#{backgroundOpacity});
+            z-index: 1;
+        }
+
     //link(rel = 'stylesheet', href=`/scripts/css/goodreads3.css`)
 
 append content

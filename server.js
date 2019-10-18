@@ -28,38 +28,38 @@ const asyncMiddleware = fn =>
   };
 
 backgroundPaths = [
-  "/images/TimsOKC/WarpDrive.gif",
-  "/images/TimsOKC/underground_green.jpg",
-  "/images/TimsOKC/underground_blue.jpg",
-  "/images/TimsOKC/lines1.jpg",
-  "/images/TimsOKC/bricks2.jpg",
-  "/images/TimsOKC/wood-paneling.jpg",
-  "/images/TimsOKC/Matrix.gif",
-  "/images/TimsOKC/beetleborgs.gif",
-  "/images/TimsOKC/airplane.jpg",
-  "/images/TimsOKC/band.jpg",
-  "/images/TimsOKC/bigClouds.jpg",
-  "/images/TimsOKC/ChinaChef.jpg",
-  "/images/TimsOKC/dirt.jpg",
-  "/images/TimsOKC/fire.jpg",
-  "/images/TimsOKC/goldenDome.jpg",
-  "/images/TimsOKC/guestroom.jpg",
-  "/images/TimsOKC/hefner1.jpg",
-  "/images/TimsOKC/neighborhood1.jpg",
-  "/images/TimsOKC/park.jpg",
-  "/images/TimsOKC/rando.jpg",
-  "/images/TimsOKC/Rick.jpg",
-  "/images/TimsOKC/russ-sufjan.jpg",
-  "/images/TimsOKC/sk.jpg",
-  "/images/TimsOKC/sky1.jpg",
-  "/images/TimsOKC/thunder.jpg",
-  "/images/TimsOKC/ThaiKitchen.jpg",
-  "/images/TimsOKC/trash.jpg",
-  "/images/TimsOKC/unnamed.jpg",
-  "/images/TimsOKC/yellow.jpg",
-  "/images/TimsOKC/zelda.gif",
+  { "image": "/images/TimsOKC/WarpDrive.gif" },
+  { "image" : "/images/TimsOKC/underground_green.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/underground_blue.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/lines1.jpg"},
+  { "image" : "/images/TimsOKC/bricks2.jpg"},
+  { "image" : "/images/TimsOKC/wood-paneling.jpg"},
+  { "image" : "/images/TimsOKC/Matrix.gif"},
+  { "image" : "/images/TimsOKC/beetleborgs.gif"},
+  { "image" : "/images/TimsOKC/airplane.jpg"},
+  { "image" : "/images/TimsOKC/bigClouds.jpg"},
+  { "image" : "/images/TimsOKC/ChinaChef.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/dirt.jpg"},
+  { "image" : "/images/TimsOKC/fire.jpg"},
+  { "image" : "/images/TimsOKC/goldenDome.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/guestroom.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/hefner1.jpg"},
+  { "image" : "/images/TimsOKC/neighborhood1.jpg"},
+  { "image" : "/images/TimsOKC/park.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/rando.jpg"},
+  { "image" : "/images/TimsOKC/Rick.jpg"},
+  { "image" : "/images/TimsOKC/russ-sufjan.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/sk.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/sky1.jpg"},
+  { "image" : "/images/TimsOKC/thunder.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/ThaiKitchen.jpg"},
+  { "image" : "/images/TimsOKC/trash.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/unnamed.jpg"},
+  { "image" : "/images/TimsOKC/yellow.jpg"},
+  { "image" : "/images/TimsOKC/zelda.gif"},
+  { "image" : "/images/TimsOKC/building1.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/cheese-grater.jpg", "opacity" : .4},
 ]
-
 catchPhrases = [
   "A Good Place",
   "Mostly Harmless",
@@ -96,7 +96,7 @@ const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 
 app.get('/otgw', asyncMiddleware(async function (req, res) {
   res.send(otgw({
-    backgroundImage: "/images/TimsOKC/otgw.gif",
+    backgroundImage: "/images/TimsOKC/otgw.jpg",
     url: "/images/TimsOKC/otgw.gif"
   }));
 }))
@@ -118,8 +118,8 @@ app.get('*', asyncMiddleware(async function (req, res) {
     }
   });
 
-
   recipes = await Promise.all(recipesPromises)
+  
   let [currentlyReading, recentReviews, ] = await Promise.all([
     goodreadsFuncs.getShelf("currently-reading", goodreadsUserId, myCredentials),
     goodreadsFuncs.getShelf("read", goodreadsUserId, myCredentials)]);
@@ -127,10 +127,13 @@ app.get('*', asyncMiddleware(async function (req, res) {
   currentlyReadingFormatted = goodreadsFuncs.formatCurrentlyReading(currentlyReading);
   recentReviewsFormatted = goodreadsFuncs.formatReview(recentReviews);
 
+  pic = backgroundPaths[getRandomInt(backgroundPaths.length)],
+
   res.send(compiledFunction({
     message: "A placeholder for something I might do someday maybe.",
-    backgroundImage: backgroundPaths[getRandomInt(backgroundPaths.length)],
+    backgroundImage: pic.image,
     catchphrase: catchPhrases[getRandomInt(catchPhrases.length)],
+    backgroundOpacity: pic.opacity || 0,
     cookingCards: recipes,
     currentlyReading: currentlyReadingFormatted,
     recentReviews: recentReviewsFormatted,
