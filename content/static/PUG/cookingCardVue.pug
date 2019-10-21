@@ -1,0 +1,14 @@
+.cooking-card
+    .container.standout.cooking-card2
+        a(href=`{{recipe.Url}}` target="_blank")
+            .top-10
+            .cooking-title.header1
+                h3(style="text-align: center;")  {{recipe.recipe.Name}}
+            .top-10
+            .picture-holder
+                img(src=`{{recipe.Pic}}` style='width:200px;')
+            .top-10
+            .cooking-info
+                p {{recipe.Date}}
+                p This recipe was {{recipe.Success}}
+            .top-10

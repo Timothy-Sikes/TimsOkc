@@ -499,3 +499,6 @@ span.line
     position: absolute;
 }
 
+.cookingCardLoaded {
+    width: 200px;
+}
