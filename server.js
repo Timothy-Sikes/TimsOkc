@@ -92,6 +92,7 @@ const base = Airtable.base('app3Q7m6yl9TLjbbP');
 const goodreadsUserId = 12784983;
 
 const otgw = pug.compileFile('./content/static/PUG/homeOtgw.pug');
+const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 
 app.get('/otgw', asyncMiddleware(async function (req, res) {
   res.send(otgw({
@@ -120,33 +121,25 @@ app.get('/api/cooking', asyncMiddleware(async function (req, res) {
   res.send(recipes);
   }));
 
-app.get('*', asyncMiddleware(async function (req, res) {
-  const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
-  recipeNightsRecords = await airtableFuncs.getLatestRecipe(base);
-
-  recipesPromises = recipeNightsRecords.slice(0,3).map(async function (recipeNight) {
-    recipeRecord = await airtableFuncs.getRecipeRecord(base, recipeNight.fields.Recipe[0])
-    return {
-      "recipe" :
-      {
-        "Pic" : recipeRecord.fields["Attachments"][0].url || "http://orcz.com/images/7/71/BreathoftheWildDubiousFood.jpg",
-        "Name" : recipeRecord.fields["Recipe Name"],
-        "Date" : recipeNight.fields["Date"],
-        "Url" : recipeRecord.fields["URL"],
-        "Success" : (recipeNight.fields.Success || "🤷") + "!",
-      }
-    }
-  });
-
-  recipes = await Promise.all(recipesPromises)
+  app.get('/api/currentlyReading', asyncMiddleware(async function (req, res) {
+    currentlyReading = await
+      goodreadsFuncs.getShelf("currently-reading", goodreadsUserId, myCredentials)
   
-  let [currentlyReading, recentReviews, ] = await Promise.all([
-    goodreadsFuncs.getShelf("currently-reading", goodreadsUserId, myCredentials),
-    goodreadsFuncs.getShelf("read", goodreadsUserId, myCredentials)]);
+    currentlyReadingFormatted = goodreadsFuncs.formatCurrentlyReading(currentlyReading);
+  
+    res.send(currentlyReadingFormatted);
+    }));
 
-  currentlyReadingFormatted = goodreadsFuncs.formatCurrentlyReading(currentlyReading);
-  recentReviewsFormatted = goodreadsFuncs.formatReview(recentReviews);
+  app.get('/api/recentReviews', asyncMiddleware(async function (req, res) {
+    recentReviews = await
+      goodreadsFuncs.getShelf("read", goodreadsUserId, myCredentials);
+  
+    recentReviewsFormatted = goodreadsFuncs.formatReview(recentReviews);
 
+    res.send(recentReviewsFormatted);
+    }));
+
+app.get('*', asyncMiddleware(async function (req, res) {
   pic = backgroundPaths[getRandomInt(backgroundPaths.length)],
 
   res.send(compiledFunction({
@@ -154,9 +147,6 @@ app.get('*', asyncMiddleware(async function (req, res) {
     backgroundImage: pic.image,
     catchphrase: catchPhrases[getRandomInt(catchPhrases.length)],
     backgroundOpacity: pic.opacity || 0,
-    cookingCards: recipes,
-    currentlyReading: currentlyReadingFormatted,
-    recentReviews: recentReviewsFormatted,
     goodreadsCss: getRandomInt(3) + 1
   }))
   })

@@ -30,8 +30,8 @@ function formatCurrentlyReading(shelf)
     return shelf.GoodreadsResponse.reviews[0].review.map(function (review) {
         return {
             "title": review.book[0].title[0],
-            "link": review.book[0].link,
-            "image": review.book[0].image_url
+            "link": review.book[0].link[0],
+            "image": review.book[0].image_url[0]
         }
     })
 }
@@ -41,9 +41,9 @@ function formatReview(shelf)
     return shelf.GoodreadsResponse.reviews[0].review.map(function (review) {
         return {
             "title": review.book[0].title[0],
-            "link": review.link,
-            "image": review.book[0].image_url,
-            "stars": review.rating,
+            "link": review.link[0],
+            "image": review.book[0].image_url[0],
+            "stars": "☆".repeat(review.rating),
             "review": review.body[0]
         }
     })

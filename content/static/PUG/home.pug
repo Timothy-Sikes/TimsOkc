@@ -14,8 +14,8 @@ include ./cookingCard.pug
 include ./cooking2.pug
 include ./chess.pug
 include ./booksMany.pug
-include ./currentlyReading.pug
-include ./recentReviews.pug
+//-include ./currentlyReading.pug
+//-include ./recentReviews.pug
 
 block append head
     +dyanmicParallax(name, url)
@@ -42,9 +42,9 @@ block append head
 append content
     +main
     //-+cooking
-    //+cookingCardVue
+    //-+cookingCardVue
     +cooking2
-    +cookingMany
+    //-+cookingMany
     //-+cookingCard
                 //-+cookingCard(val)
     //-+likes

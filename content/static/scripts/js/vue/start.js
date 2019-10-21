@@ -1,4 +1,4 @@
-function start()
+async function start()
 {
     Vue.component('cookingcard', {
         data: function () {
@@ -11,26 +11,30 @@ function start()
             "Success": "Excellent"
         }*/
         },
-        mounted() {
+        /*mounted() {
             axios.get("http://localhost:8000/api/cooking")
                 .then(response => {
                     console.log(response.data[0]);
                     console.log(response.data[0].Pic);
                     this.recipe = response.data[0]
+                    this.recipes = response.data
                     this.cookingCardLoaded = true;
                 });
+        },*/
+        props: {
+            recipe: Object
         },
         template: `
         <div class="cooking-card">
         <div class="container standout cooking-card2">
-            <a href="{{recipe.Url}}" target="_blank">
+            <a v-bind:href="recipe.Url" target="_blank">
                 <div class="top-10"></div>
-                <div class="cooking-title header 1">
+                <div class="cooking-title header1">
                     <h3 style="text-align: center;"> {{recipe.Name}} </h3>
                 </div>
                 <div class="top-10"></div>
                 <div class="picture-holder">
-                    <img src="{{recipe.Pic}}" style=''></img>
+                    <img v-bind:src="recipe.Pic" style='width: 200px;'></img>
                 </div>
                 <div class="top-10"></div>
                 <div class="picture-holder">
@@ -41,10 +45,91 @@ function start()
             </a>
         </div>
     </div>
+    </div>
     `
     });
 
-  new Vue({
-    el: '#cooking2'
+    Vue.component('currentlyreading', {
+        data: function () {
+            return {book: null};
+        },
+        props: {
+            book: Object
+        },
+        template: `
+        <div id="currently-reading-card">
+            <div class="container standout3">
+                <a v-bind:href="book.link" target="_blank")
+                    <div class="top-10"></div>
+                    <div class="book-title header3">
+                        <h3 style="text-align: center;"> {{book.title}}
+                    </div>
+                    <div class="top-10"></div>
+                    <div class="picture-holder">
+                        <img v-bind:src="book.image" style='width:100px;'></img>
+                    <div class="top-10"></div>
+    `
+    });
+
+    Vue.component('recentreviews', {
+        data: function () {
+            return {book: null};
+        },
+        props: {
+            book: Object
+        },
+        template: `
+        <div class="recent-review-card">
+            <div class="container standout3">
+                <a v-bind:href="book.link" target="_blank">
+                    <div class="top-10"></div>
+                    <div class="book-title header3">
+                        <h3 style="text-align: center;"> {{book.title}} </h3>
+                    </div>
+                <p class="star">
+                    {{book.star}}
+                </p>
+                <div class="top-10"></div>
+                <div class="picture-holder">
+                    <img v-bind:src="book.image" style='width:100px;'></img>
+                </a>
+            <div class="top-10"></div>
+            <div class="book-review">
+                <p v-html="book.review"></p>
+            </div>
+    `
+    });
+
+  recipes = await getRecipes();
+
+  cooking = new Vue({
+    el: '#cooking',
+    data: {recipes}
   })
+
+  currentlyReading = await getCurrentlyReading();
+  recentReviews = await getRecentReviews();
+  console.log(recentReviews);
+
+  currentlyReadingApp = new Vue({
+      el: '#book-currently-reading',
+      data: {currentlyReading}
+  })
+
+  recentReviewsApp = new Vue({
+    el: '#book-recent-reviews',
+    data: {recentReviews}
+})
 }
+
+async function getRecipes() {
+    return (await axios.get("http://localhost:8000/api/cooking")).data
+  }
+
+async function getCurrentlyReading() {
+    return (await axios.get("http://localhost:8000/api/currentlyReading")).data
+  }
+
+async function getRecentReviews() {
+    return (await axios.get("http://localhost:8000/api/recentReviews")).data
+  }

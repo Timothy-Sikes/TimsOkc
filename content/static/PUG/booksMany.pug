@@ -19,7 +19,7 @@ mixin booksMany
                                 | Currently Reading
                         .top-20
                 #book-currently-reading
-                    block bookCurrentlyReading
+                    | <currentlyreading v-for="book in currentlyReading" :book="book"></currentlyreading>
             .top-20
             .recentReviews
                 .standout2
@@ -28,5 +28,5 @@ mixin booksMany
                                 | Recent Reviews
                         .top-20
                 #book-recent-reviews
-                    block bookRecentReviews
+                    | <recentreviews v-for="book in recentReviews" :book="book"></recentreviews>
             .top-20
