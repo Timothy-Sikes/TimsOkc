@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "watch": "npm run watch-css & nodemon server",
-    "start": "webpack --config webpack.config.js --env.TIMS_API_URL=http://timsokc.com & node server",
-    "build": "webpack --config webpack.config.js --env.TIMS_API_URL=http://timsokc.com"
+    "start": "webpack --config webpack.config.js & node server",
+    "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "airtable": "^0.7.1",

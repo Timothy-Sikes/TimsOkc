@@ -3,8 +3,6 @@ var webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = env => {
-    console.log(env.TIMS_API_URL);
-
     return {
         entry: {
             cookingCard: './src/components/cookingCard.js',
@@ -23,7 +21,7 @@ module.exports = env => {
         plugins: [
             new VueLoaderPlugin(),
             new webpack.DefinePlugin({
-            TIMS_API_URL: JSON.stringify(env.TIMS_API_URL)
+            TIMS_API_URL: JSON.stringify(process.env.TIMS_API_URL)
             })
         ],
         resolve: {
