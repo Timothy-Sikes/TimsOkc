@@ -1,5 +1,5 @@
 async function getRecentReviews() {
-    return (await axios.get("http://localhost:8000/api/recentReviews")).data
+    return (await axios.get(TIMS_API_URL + "/api/recentReviews")).data
   }
 
 async function start()

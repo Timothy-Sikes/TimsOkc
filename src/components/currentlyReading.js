@@ -1,5 +1,5 @@
 async function getCurrentlyReading() {
-    return (await axios.get("http://localhost:8000/api/currentlyReading")).data
+    return (await axios.get(TIMS_API_URL + "/api/currentlyReading")).data
   }
 
 async function start()
