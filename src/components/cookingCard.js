@@ -1,5 +1,5 @@
-async function getRecipes() {
-    return (await axios.get(TIMS_API_URL + "/api/cooking")).data
+async function getRecipes(lastDate) {
+    return (await axios.get(TIMS_API_URL + "/api/cooking", { params: {"lastDate" : lastDate} })).data
 }
 
 async function start()

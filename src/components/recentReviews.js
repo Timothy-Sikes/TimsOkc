@@ -1,8 +1,8 @@
 page = 1;
 
-async function getRecentReviews() {
-    return (await axios.get(TIMS_API_URL + "/api/recentReviews")).data
-  }
+async function getRecentReviews(page) {
+    return (await axios.get(TIMS_API_URL + "/api/recentReviews", { params: { "page" : page }})).data
+}
 
 async function start()
 {

@@ -103,7 +103,7 @@ app.get('/otgw', asyncMiddleware(async function (req, res) {
 
   app.get('/api/cooking', asyncMiddleware(async function (req, res) {
     lastDate = req.query['lastDate'] || "";
-  
+
     recipeNightsRecords = await airtableFuncs.getLatestRecipe2(base, lastDate);
   
     recipesPromises = recipeNightsRecords.map(async function (recipeNight) {
