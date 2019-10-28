@@ -1,3 +1,5 @@
+page = 1;
+
 async function getRecentReviews() {
     return (await axios.get(TIMS_API_URL + "/api/recentReviews")).data
   }
@@ -12,6 +14,8 @@ async function start()
             book: Object
         },
         template: `
+        <transition name="fade">
+        
         <div class="recent-review-card">
             <div class="container standout3">
                 <a v-bind:href="book.link" target="_blank">
@@ -20,7 +24,7 @@ async function start()
                         <h3 style="text-align: center;"> {{book.title}} </h3>
                     </div>
                 <p class="star">
-                    {{book.star}}
+                    {{book.stars}}
                 </p>
                 <div class="top-10"></div>
                 <div class="picture-holder">
@@ -30,6 +34,8 @@ async function start()
             <div class="book-review">
                 <p v-html="book.review"></p>
             </div>
+
+    </transition>
     `
     });
 
@@ -38,6 +44,9 @@ async function start()
         el: '#book-recent-reviews',
         data: {recentReviews}
     })
+
+
+    document.getElementById("recentReviewsMore").addEventListener("click", loadMoreReviews);
 }
 
 function ready(fn) {
@@ -51,3 +60,12 @@ function ready(fn) {
   ready(function() {
     start();
   });
+
+async function loadMoreReviews() {
+    page = page + 1;
+
+    moreReviews = (await getRecentReviews(page))
+    moreReviews.forEach(function(review) {
+        recentReviewsApp._data.recentReviews.push(review);
+    })
+}

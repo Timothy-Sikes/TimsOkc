@@ -10,14 +10,15 @@ async function getUserShelves(userId, credentials)
     return parser.parseStringPromise(response.data);
 }
 
-async function getShelf(shelfName, userId, credentials)
+async function getShelf(shelfName, userId, credentials, page)
 {
     response = await axios.get(goodreadsApiBase + "/review/list?v=2&"
         + "key=" + credentials.key
         + "&id=" + userId
         + "&shelf=" + shelfName
         + "&sort=date_started"
-        + "&per_page=5");
+        + "&per_page=5"
+        + "&page=" + page);
 
     return parser.parseStringPromise(response.data);
 }

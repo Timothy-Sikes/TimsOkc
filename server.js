@@ -101,25 +101,33 @@ app.get('/otgw', asyncMiddleware(async function (req, res) {
   }));
 }))
 
-
-app.get('/api/cooking', asyncMiddleware(async function (req, res) {
-  recipeNightsRecords = await airtableFuncs.getLatestRecipe(base);
-
-  recipesPromises = recipeNightsRecords.slice(0,3).map(async function (recipeNight) {
-    recipeRecord = await airtableFuncs.getRecipeRecord(base, recipeNight.fields.Recipe[0])
-    return {
-        "Pic" : recipeRecord.fields["Attachments"][0].url || "http://orcz.com/images/7/71/BreathoftheWildDubiousFood.jpg",
-        "Name" : recipeRecord.fields["Recipe Name"],
-        "Date" : recipeNight.fields["Date"],
-        "Url" : recipeRecord.fields["URL"],
-        "Success" : (recipeNight.fields.Success || "🤷") + "!",
-    }
-  });
-
-  recipes = await Promise.all(recipesPromises);
-
-  res.send(recipes);
-  }));
+  app.get('/api/cooking', asyncMiddleware(async function (req, res) {
+    lastDate = req.query['lastDate'] || "";
+  
+    recipeNightsRecords = await airtableFuncs.getLatestRecipe2(base, lastDate);
+  
+    recipesPromises = recipeNightsRecords.map(async function (recipeNight) {
+      recipeRecord = await airtableFuncs.getRecipeRecord(base, recipeNight.fields.Recipe[0])
+      pic = ""
+      if (!recipeRecord.fields["Attachments"]) {
+        pic = "http://orcz.com/images/7/71/BreathoftheWildDubiousFood.jpg"
+      }
+      else {
+        pic = recipeRecord.fields["Attachments"][0].url
+      }
+      return {
+          "Pic" : pic,
+          "Name" : recipeRecord.fields["Recipe Name"],
+          "Date" : recipeNight.fields["Date"],
+          "Url" : recipeRecord.fields["URL"],
+          "Success" : (recipeNight.fields.Success || "🤷") + "!",
+      }
+    });
+  
+    recipes = await Promise.all(recipesPromises);
+  
+    res.send(recipes);
+    }));
 
   app.get('/api/currentlyReading', asyncMiddleware(async function (req, res) {
     currentlyReading = await
@@ -131,8 +139,10 @@ app.get('/api/cooking', asyncMiddleware(async function (req, res) {
     }));
 
   app.get('/api/recentReviews', asyncMiddleware(async function (req, res) {
+    page = req.query['page'] || 0;
+    
     recentReviews = await
-      goodreadsFuncs.getShelf("read", goodreadsUserId, myCredentials);
+      goodreadsFuncs.getShelf("read", goodreadsUserId, myCredentials, page);
   
     recentReviewsFormatted = goodreadsFuncs.formatReview(recentReviews);
 

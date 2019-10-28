@@ -13,4 +13,6 @@ mixin cooking2
                 .break
                 .top-20
                     | <cookingcard v-for="recipe in recipes" :recipe="recipe"></cookingcard>
-                .top-20
+                .text.animated.bounce#cookingMore
+                    p.center Load More
+                    p.more ↓

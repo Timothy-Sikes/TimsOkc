@@ -6,6 +6,21 @@ function getLatestRecipe(base)
     }).firstPage();
 }
 
+async function getLatestRecipe2(base, lastRecipeDate)
+{
+    pageSize = 3;
+    filterByFormula = ""
+    if (lastRecipeDate) {
+        filterByFormula = "IF(DATETIME_DIFF('" + lastRecipeDate + "', {Date}, 'units') < 0, 0, 1)"
+    }
+
+    return base('Recipe Nights').select({
+        pageSize: pageSize,
+        sort: [{field: "Date", direction: "desc"}],
+        filterByFormula: filterByFormula
+      }).firstPage();
+}
+
 function getRecipeRecord(base, recordId)
 {
     return base('Recipes').find(recordId);
@@ -13,5 +28,6 @@ function getRecipeRecord(base, recordId)
 
 module.exports = {
     getLatestRecipe,
-    getRecipeRecord
+    getRecipeRecord,
+    getLatestRecipe2
 }

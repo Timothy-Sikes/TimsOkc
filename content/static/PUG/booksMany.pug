@@ -29,4 +29,8 @@ mixin booksMany
                         .top-20
                 #book-recent-reviews
                     | <recentreviews v-for="book in recentReviews" :book="book"></recentreviews>
+                    .top-20
+                    .text.animated.bounce#recentReviewsMore
+                        p.center Load More
+                        p.more ↓
             .top-20
