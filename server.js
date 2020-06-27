@@ -12,14 +12,20 @@ const myCredentials = {
   secret: process.env.GOODREADS_SECRET
 };
 
+console.log("here")
+
 Airtable.configure({
   endpointUrl: 'https://api.airtable.com',
   apiKey: process.env.AIRTABLE_API_KEY
 });
 
+console.log("here again")
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
+
+console.log(process.env.PORT)
 
 const asyncMiddleware = fn =>
   (req, res, next) => {
@@ -91,6 +97,17 @@ const goodreadsUserId = 12784983;
 
 const otgw = pug.compileFile('./content/static/PUG/homeOtgw.pug');
 const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
+const youtube = pug.compileFile('./content/static/PUG/yt.pug');
+
+app.get('/yt', asyncMiddleware(async function (req, res) {
+  
+  console.log("yt")
+  
+  res.send(youtube({
+    backgroundImage: "/images/TimsOKC/otgw.jpg",
+    url: "/images/TimsOKC/otgw.gif"
+  }));
+}))
 
 app.get('/otgw', asyncMiddleware(async function (req, res) {
   res.send(otgw({
@@ -148,6 +165,9 @@ app.get('/otgw', asyncMiddleware(async function (req, res) {
     }));
 
 app.get('*', asyncMiddleware(async function (req, res) {
+
+  console.log("home")
+
   pic = backgroundPaths[getRandomInt(backgroundPaths.length)],
 
   res.send(compiledFunction({

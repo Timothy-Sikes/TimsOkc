@@ -9,7 +9,7 @@
   "dependencies": {
     "airtable": "^0.7.2",
     "axios": "^0.19.0",
-    "express": "^4.15.2",
+    "express": "^4.17.1",
     "http-server": "^0.10.0",
     "nodemon": "^1.19.4",
     "pug": "^2.0.4",
