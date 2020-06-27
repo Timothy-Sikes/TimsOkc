@@ -67,6 +67,12 @@ backgroundPaths = [
   { "image" : "/images/TimsOKC/cheese-grater.jpg", "opacity" : .4},
   { "image" : "/images/TimsOKC/bread.jpg", "opacity" : .4},
   { "image" : "/images/TimsOKC/downtown2.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/bridge.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/door.jpg", "opacity" : .4},
+  { "image" : "/images/TimsOKC/HefnerSunset.jpg"},
+  { "image" : "/images/TimsOKC/OKRiver.jpg"},
+  { "image" : "/images/TimsOKC/OKRiver2.jpg"},
+  { "image" : "/images/TimsOKC/vr.jpg", "opacity" : .4},
 ]
 catchPhrases = [
   "A Good Place",
