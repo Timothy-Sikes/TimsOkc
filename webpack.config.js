@@ -6,6 +6,7 @@ module.exports = env => {
     return {
         entry: {
             cookingCard: './src/components/cookingCard.js',
+            liminality: './src/components/liminality.js',
             currentlyReading: './src/components/currentlyReading.js',
             recentReviews: './src/components/recentReviews.js'
         },

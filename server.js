@@ -104,6 +104,7 @@ const goodreadsUserId = 12784983;
 const otgw = pug.compileFile('./content/static/PUG/homeOtgw.pug');
 const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 const youtube = pug.compileFile('./content/static/PUG/yt.pug');
+const liminality = pug.compileFile('./content/static/PUG/liminalityFull.pug')
 
 app.get('/yt', asyncMiddleware(async function (req, res) {
   
@@ -113,6 +114,12 @@ app.get('/yt', asyncMiddleware(async function (req, res) {
     backgroundImage: "/images/TimsOKC/otgw.jpg",
     url: "/images/TimsOKC/otgw.gif"
   }));
+}))
+
+app.get("/liminality", asyncMiddleware(async function (req, res) {
+  console.log("liminality")
+  
+  res.send(liminality());
 }))
 
 app.get('/otgw', asyncMiddleware(async function (req, res) {
