@@ -104,7 +104,7 @@ const goodreadsUserId = 12784983;
 const otgw = pug.compileFile('./content/static/PUG/homeOtgw.pug');
 const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 const youtube = pug.compileFile('./content/static/PUG/yt.pug');
-const liminality = pug.compileFile('./content/static/PUG/liminalityFull.pug')
+const liminality = pug.compileFile('./content/static/PUG/liminalityPage.pug')
 
 app.get('/yt', asyncMiddleware(async function (req, res) {
   

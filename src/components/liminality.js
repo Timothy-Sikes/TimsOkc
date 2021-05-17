@@ -12,7 +12,9 @@ async function loadLiminality() {
     element2.classList.add("grow");
 
     var content = document.getElementById("content");
-    content.classList.remove("hidden");
+    content.classList.remove("hiddenMine");
+
+    history.pushState({}, "liminality", '/liminality');
 }
 
 function ready(fn) {

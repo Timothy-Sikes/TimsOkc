@@ -1,4 +1,17 @@
 mixin footer
+    style(type='text/css').
+        #footer a:link {
+            color: rgba(255, 246, 146, 100);
+            text-decoration: underline;
+        }
+
+        #footer a:visited {
+            color: rgba(255, 246, 10, 100);
+            text-decoration: underline;
+        }
     footer
-        .container
-            p.text-right Copyright &copy; Tim's OKC 2019
+        #footer
+            .container
+                p.text-right Copyright &copy; 
+                    a(href="http://www.timsokc.com/") Tim's OKC
+                    span &nbsp; 2021

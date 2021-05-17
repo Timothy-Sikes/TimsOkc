@@ -1,7 +1,9 @@
 extends default
 
-include ./liminality.pug
-
+include ./liminalityCss.pug
+include ./liminalityCover.pug
+include ./liminalityContent.pug
+include ./footer.pug
 
 block append head
     link(rel = 'stylesheet', href=`/scripts/css/main.css`)
@@ -15,4 +17,7 @@ block append head
     meta(property="og:description" content="We're here to burgle your turts!")
 
 append content
-    +liminality
+    +liminalityCss
+    +liminalityCover
+    +liminalityContent
+    +footer
