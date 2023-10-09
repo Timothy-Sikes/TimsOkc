@@ -6,6 +6,9 @@
     "start": "webpack --config webpack.config.js & node server",
     "build": "webpack --config webpack.config.js"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "airtable": "^0.7.2",
     "axios": "^0.19.0",
