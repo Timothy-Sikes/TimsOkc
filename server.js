@@ -4,6 +4,7 @@ const pug = require('pug');
 var goodreadsFuncs = require("./goodreads/goodreads.js")
 var Airtable = require('airtable');
 var airtableFuncs = require('./airtable/airtableFuncs.js')
+require('dotenv').config();
 
 app.use(express.static('./content/static/'));
 
@@ -193,4 +194,4 @@ app.get('*', asyncMiddleware(async function (req, res) {
   })
 )
 
-app.listen((process.env.PORT || 8000));
+app.listen(8002);
